@@ -5,8 +5,8 @@ include("../../objects/users.php");
 
 if (empty($_GET['user_id'])) {
     $error = new stdClass();
-    $error->message = "No id specified!";
-    $error->code = "0004";
+    $error->message = "No id is specified!";
+    $error->code = "404";
     print_r(json_encode($error));
     die();
 }
@@ -14,7 +14,7 @@ if (empty($_GET['user_id'])) {
 if (empty($_GET['username'])) {
     $error = new stdClass();
     $error->message = "No username is specified!";
-    $error->code = "0001";
+    $error->code = "404";
     print_r(json_encode($error));
     die();
 }
@@ -22,7 +22,7 @@ if (empty($_GET['username'])) {
 if (empty($_GET['email'])) {
     $error = new stdClass();
     $error->message = "No email is specified!";
-    $error->code = "0002";
+    $error->code = "404";
     print_r(json_encode($error));
     die();
 }
@@ -30,15 +30,15 @@ if (empty($_GET['email'])) {
 if (empty($_GET['password'])) {
     $error = new stdClass();
     $error->message = "No password is specified!";
-    $error->code = "0003";
+    $error->code = "404";
     print_r(json_encode($error));
     die();
 }
 
 if (empty($_GET['role'])) {
     $error = new stdClass();
-    $error->message = "No role specified!";
-    $error->code = "0004";
+    $error->message = "No role is specified!";
+    $error->code = "404";
     print_r(json_encode($error));
     die();
 }

@@ -6,8 +6,8 @@ include("../../objects/users.php");
 
 if(empty($_GET['user_id'])) {
     $error = new stdClass();
-    $error->message = "No id specified!";
-    $error->code = "0004";
+    $error->message = "No id is specified!";
+    $error->code = "404";
     print_r(json_encode($error));
     die();
 }

@@ -5,7 +5,7 @@ include("../../objects/products.php");
 
 $error = new stdClass();
 if(empty($_GET['title'])) {
-    $error->message = "A product needs a title!";
+    $error->message = "No Title is specified";
     $error->code = "0002";
     print_r(json_encode($error));
     die();
@@ -13,15 +13,15 @@ if(empty($_GET['title'])) {
 
 
 if(empty($_GET['description'])) {
-    $error->message = "A product needs a description!";
-    $error->code = "0003";
+    $error->message = "No description is specified";
+    $error->code = "404";
     print_r(json_encode($error));
     die();
 }
 
 if(empty($_GET['price'])) {
-    $error->message = "A product needs a price!";
-    $error->code = "0004";
+    $error->message = "No price is specified";
+    $error->code = "404";
     print_r(json_encode($error));
     die();
 }

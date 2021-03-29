@@ -5,31 +5,31 @@
 
 $error = new stdClass();
 if(empty($_GET['username'])) {
-    $error->message = "A user needs a username";
-    $error->code = "0010";
+    $error->message = "No username is specified";
+    $error->code = "404";
     print_r(json_encode($error));
     die();
 }
 
 
 if(empty($_GET['email'])) {
-    $error->message = "A user needs a email addres";
-    $error->code = "0011";
+    $error->message = "No email is specified";
+    $error->code = "404";
     print_r(json_encode($error));
     die();
 }
 
 
 if(empty($_GET['password'])) {
-    $error->message = "A User needs a password!";
-    $error->code = "0013";
+    $error->message = "No password is specified";
+    $error->code = "404";
     print_r(json_encode($error));
     die();
 }
 
 if(empty($_GET['role'])) {
-    $error->message = "A User needs a role";
-    $error->code = "0014";
+    $error->message = "No role is specified";
+    $error->code = "404";
     print_r(json_encode($error));
     die();
 }

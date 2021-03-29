@@ -20,11 +20,11 @@ function __construct($db){
 
   if($stmt->execute()){
     $message->message = "The product is succesfully created";
-    $message->postID = $this->database_connection->lastInsertID();
+    $message->code = "201";
 
   }else {
     $message->message = "Could not add product!";
-    $message->code = "0001";
+    $message->code = "500";
   }
  
   return $message;
@@ -57,6 +57,7 @@ $stmt->bindParam(":id_IN", $id);
 if($stmt->execute()){
 $message = new stdClass();
 $message->message = "Succesfully deleted post";
+$message->code= "200";
 return $message;
   } 
  }
@@ -79,7 +80,8 @@ $this->updateTitle($id, $title);
      }
     
 $message = new stdClass();
-$message = "The product is succesfully updated";
+$message->message = "The product is succesfully updated";
+$message->code= "200";
 return $message;
 }
 private function updateTitle($id, $title) {
