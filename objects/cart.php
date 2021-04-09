@@ -30,6 +30,7 @@ $message->code="200";
 return $message;
 
 
+
 $this->isTokenValid($loggedInToken);
 
 
@@ -86,7 +87,40 @@ return $message;
 
   }
 
+function checkout($cart_session){
 
+$sql= "SELECT * FROM products LEFT JOIN cart ON cart.product_id=products.id
+LEFT JOIN sessions ON cart.cart_session_id=sessions.id WHERE cart_session_id = :cart_session_IN";
+$stmt = $this->database_connection->prepare($sql);
+$stmt->bindParam(":cart_session_IN", $cart_session);
+$stmt->execute();
+
+$row = $stmt->fetch();
+
+$price = $row['price'];
+$quantity = $row['quantity'];
+$session_id = $row['cart_session_id'];
+
+
+
+$totalCartPrice = $price * $quantity;
+
+
+$sql= "INSERT INTO Orders (session_id, total_price) VALUES(:session_id_IN, :total_price_IN)";
+$stmt = $this->database_connection->prepare($sql);
+$stmt->bindParam(":session_id_IN", $session_id);
+$stmt->bindParam(":total_price_IN", $totalCartPrice);
+$stmt->execute();
+
+$message = new stdClass();
+$message->message = "Thank you for your order. Your total order is: $totalCartPrice";
+$message->code = "200";
+
+return $message;
+
+
+
+ }
 
 
 }
